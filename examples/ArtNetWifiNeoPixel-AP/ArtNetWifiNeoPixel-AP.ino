@@ -18,7 +18,7 @@ const char* ssid = "ArtNet";
 const char* password = "art12345!";
 
 // Neopixel settings
-const int numLeds = 750; // change for your setup
+const int numLeds = 240; // change for your setup
 const int numberOfChannels = numLeds * 3; // Total number of channels you want to receive (1 led = 3 channels)
 const byte dataPin = 2;
 Adafruit_NeoPixel leds = Adafruit_NeoPixel(numLeds, dataPin, NEO_GRB + NEO_KHZ800);
@@ -36,7 +36,6 @@ int previousDataLength = 0;
 void WifiAccessPoint() 
 {
   delay(1000);
-  //Serial.begin(115200);
   Serial.println();
   Serial.print("Configuring access point...");
   /* You can remove the password parameter if you want the AP to be open. */
@@ -102,7 +101,6 @@ void onDmxFrame(uint16_t universe, uint16_t length, uint8_t sequence, uint8_t* d
   if (sendFrame)
   {
     leds.show();
-    //Serial.println("sendFrame recieved");
     // Reset universeReceived to 0
     memset(universesReceived, 0, maxUniverses);
   }
